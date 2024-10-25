@@ -4,4 +4,4 @@
 4. Save it
 5. Run on StickTogether
 
-If you cant see bookmark bar pres control + shift + b
+If you cant see bookmark bar press control + shift + b
