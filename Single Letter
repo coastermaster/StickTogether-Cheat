@@ -1,1 +1,22 @@
-javascript:(function(){const elements=document.querySelectorAll('.letters-root.scale-1 .tx.active');elements.forEach((element,index)=>{setTimeout(()=>{const{left,width,top,height}=element.getBoundingClientRect();const x=left+width/2,y=top+height/2;const mouseEvent=new MouseEvent('mousedown',{view:window,bubbles:true,cancelable:true,clientX:x,clientY:y});document.elementFromPoint(x,y).dispatchEvent(mouseEvent);},1);});})();
+javascript:(function(){
+  const elements = document.querySelectorAll('.letters-root.scale-1 .tx.active');
+  elements.forEach((element, index) => {
+    setTimeout(() => {
+      const boundingRect = element.getBoundingClientRect();
+      const left = boundingRect.left;
+      const width = boundingRect.width;
+      const top = boundingRect.top;
+      const height = boundingRect.height;
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
+      const mouseDownEvent = new MouseEvent('mousedown', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        clientX: centerX,
+        clientY: centerY
+      });
+      document.elementFromPoint(centerX, centerY).dispatchEvent(mouseDownEvent);
+    }, 1);
+  });
+})();
