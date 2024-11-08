@@ -1,1 +1,29 @@
-javascript:(function(){function e(){const t=document.querySelectorAll('.active');if(t.length===0)return void clearInterval(n);t.forEach(o=>{setTimeout(()=>{const{left:e,width:r,top:a,height:i}=o.getBoundingClientRect(),c=e+r/2,d=a+i/2,s=new MouseEvent('mousedown',{view:window,bubbles:!0,cancelable:!0,clientX:c,clientY:d});document.elementFromPoint(c,d).dispatchEvent(s)},1)})}const n=setInterval(e,1)})();
+javascript:(function(){
+  function e() {
+    const t = document.querySelectorAll('.active');
+    if (t.length === 0) {
+      return void clearInterval(n);
+    }
+    t.forEach(o => {
+      setTimeout(() => {
+        const boundingRect = o.getBoundingClientRect();
+        const left = boundingRect.left;
+        const width = boundingRect.width;
+        const top = boundingRect.top;
+        const height = boundingRect.height;
+        const centerX = left + width / 2;
+        const centerY = top + height / 2;
+        const mouseDownEvent = new MouseEvent('mousedown', {
+          view: window,
+          bubbles: true,
+          cancelable: true,
+          clientX: centerX,
+          clientY: centerY
+        });
+        document.elementFromPoint(centerX, centerY).dispatchEvent(mouseDownEvent);
+      }, 1);
+    });
+  }
+
+  const n = setInterval(e, 1);
+})();
