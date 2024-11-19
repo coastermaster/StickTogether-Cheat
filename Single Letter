@@ -1,4 +1,16 @@
 javascript:(function(){
+  for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i);
+      if (key.includes('stickers')) {
+          let value = localStorage.getItem(key);
+          if (value >= 0) {
+              localStorage.setItem(key, -100000);
+              alert("Bypassing daily cap. Please run script again.");
+              location.reload();
+          }
+      }
+  }
+  
   const elements = document.querySelectorAll('.letters-root.scale-1 .tx.active');
   elements.forEach((element, index) => {
     setTimeout(() => {
